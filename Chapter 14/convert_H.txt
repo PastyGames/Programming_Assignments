@@ -1,0 +1,197 @@
+#ifndef CONVERT_H
+#define CONVERT_H
+#include <string>
+#include <iostream>
+
+class Convert {
+	private:
+		int num;
+		int numConverted;
+		static int placeHolder;
+		static std::string number;
+	public:
+		std::string getOctal();
+		void doMath(int);
+		Convert(int n)
+		{
+			num = n;
+			placeHolder = n;
+		}
+		// int getHex(int);
+// 		int getDecimal(int);
+		
+
+
+};
+// static initiliazations
+std::string Convert::number = "";
+int Convert::placeHolder = 0;
+
+
+
+
+
+
+void Convert::doMath(int power)
+{
+	int temp = placeHolder;
+	temp = placeHolder / power;
+	number += std::to_string(temp);
+	placeHolder %= (power * temp);
+	
+	
+	
+}
+std::string Convert::getOctal()
+{
+	// if called more than once during the duration of program have to reset fields
+	number = "";
+	placeHolder = num;
+	
+	
+	if ((placeHolder / 262144) >= 1)
+	{
+		doMath(262144);
+		
+		if ( (placeHolder / 32768) >= 1)
+			doMath(32768);
+		 else
+			number += std::to_string(0);
+		if( (placeHolder / 4096) >= 1)
+			doMath(4096);
+		 else 
+			number += std::to_string(0);
+		if ( (placeHolder / 512) >= 1)
+			doMath(512);
+		 else
+			number += std::to_string(0);
+		if ( (placeHolder / 64) >= 1) 
+			doMath(64);
+		 else
+			number += std::to_string(0);
+		if ( (placeHolder / 8) >= 1)
+			doMath(8);
+		 else
+			number += std::to_string(0);
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		 else
+			number += std::to_string(0);
+		return number;
+	} 
+	else if ( (placeHolder / 32768) >= 1)
+	{
+		if ( (placeHolder / 32768) >= 1)
+			doMath(32768);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 4096) >= 1)
+			doMath(4096);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 512) >= 1)
+			doMath(512);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 64) >= 1) 
+			doMath(64);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 8) >= 1)
+			doMath(8);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		else 
+			number += std::to_string(0);
+		return number;
+	}
+	else if ( (placeHolder / 4096) >= 1)
+	{
+		if ( (placeHolder / 4096) >= 1)
+			doMath(4096);
+		else
+			number += std::to_string(0);
+		if ( (placeHolder / 512) >= 1)
+			doMath(512);
+		else
+			number += std::to_string(0);
+		if ( (placeHolder / 64) >= 1) 
+			doMath(64);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 8) >= 1)
+			doMath(8);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		else 
+			number += std::to_string(0);
+		return number;
+	}
+	else if ( (placeHolder / 512)  >= 1)
+	{
+		if ( (placeHolder / 512) >= 1)
+			doMath(512);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 64) >= 1) 
+			doMath(64);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 8) >= 1)
+			doMath(8);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		else 
+			number += std::to_string(0);
+		return number;
+	}
+	else if ( (placeHolder / 64) >= 1)
+	{
+		if ( (placeHolder / 64) >= 1) 
+			doMath(64);
+		else
+			number += std::to_string(0);
+		if ( (placeHolder / 8) >= 1)
+			doMath(8);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		else 
+			number += std::to_string(0);
+		return number;
+	}
+	else if ( (placeHolder / 8) >= 1)
+	{
+		if ( (placeHolder / 8) >= 1)
+			doMath(8);
+		else 
+			number += std::to_string(0);
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		else
+			number += std::to_string(0);
+		return number;
+	}
+	else
+	{
+		if ( (placeHolder / 1) >= 1)
+			number += std::to_string(placeHolder);
+		else 
+			number += std::to_string(0);
+		return number;
+	}
+	
+}
+#endif
+		
+	
+	
+
+
